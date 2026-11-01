@@ -1,0 +1,28 @@
+{
+  "overall_risk_score": 72,
+  "overall_risk_level": "높음",
+  "summary": "사진 배경과 글 내용을 합치면 사는 동네와 생활 패턴이 유추될 수 있어요.",
+  "risks": [
+    {
+      "category": "위치",
+      "risk_factor": "창밖에 보이는 아파트 이름과 주변 건물",
+      "risk_level": "높음",
+      "evidence": "사진 왼쪽 창문 너머로 아파트 외벽 글자와 근처 간판이 보여요.",
+      "solution": "창밖 부분을 모자이크하거나 사진을 잘라서 올려주세요."
+    },
+    {
+      "category": "신원",
+      "risk_factor": "택배 상자에 붙은 송장",
+      "risk_level": "높음",
+      "evidence": "바닥의 택배 상자 송장에 이름과 주소 일부가 보여요.",
+      "solution": "송장을 떼거나 가린 뒤 촬영해 주세요."
+    },
+    {
+      "category": "생활패턴",
+      "risk_factor": "매일 같은 시간대 게시물",
+      "risk_level": "보통",
+      "evidence": "글에 '매일 아침 7시 등교길'이라는 표현이 있어요.",
+      "solution": "시간과 장소를 특정할 수 있는 표현은 빼고, 게시는 시간차를 두고 해주세요."
+    }
+  ]
+}

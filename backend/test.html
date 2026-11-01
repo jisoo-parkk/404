@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko"><head><meta charset="utf-8"><title>백엔드 테스트</title>
+<style>body{font-family:sans-serif;max-width:640px;margin:40px auto;padding:0 16px}
+input,textarea,button{width:100%;margin:6px 0;padding:8px;box-sizing:border-box}
+pre{background:#f4f4f4;padding:12px;white-space:pre-wrap}</style></head>
+<body>
+<h2>백엔드 테스트 페이지</h2>
+<input id="account" placeholder="SNS 계정 (예: @my_insta)">
+<textarea id="text" rows="4" placeholder="게시물 글 내용"></textarea>
+<input id="images" type="file" accept="image/*" multiple>
+<button onclick="go()">분석하기</button>
+<pre id="out">결과가 여기에 나와요</pre>
+<script>
+async function go(){
+  const out=document.getElementById('out'); out.textContent='분석 중... (10~30초)';
+  const fd=new FormData();
+  fd.append('account',document.getElementById('account').value);
+  fd.append('text',document.getElementById('text').value);
+  for(const f of document.getElementById('images').files) fd.append('images',f);
+  try{
+    const res=await fetch('/api/analyze',{method:'POST',body:fd});
+    out.textContent=JSON.stringify(await res.json(),null,2);
+  }catch(e){out.textContent='오류: '+e}
+}
+</script></body></html>
