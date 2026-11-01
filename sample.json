@@ -1,0 +1,31 @@
+{
+  "overall": "high",
+  "detections": [
+    {
+      "id": 0,
+      "category": "face",
+      "risk_level": "high",
+      "confidence": 0.95,
+      "bbox": [120, 80, 64, 64],
+      "description": "얼굴이 선명하게 노출됨",
+      "action": "blur"
+    },
+    {
+      "id": 1,
+      "category": "location",
+      "risk_level": "medium",
+      "confidence": 0.81,
+      "bbox": [300, 400, 150, 40],
+      "description": "간판에 상호명과 주소가 보임",
+      "action": "blur"
+    }
+  ],
+  "combined_risks": [
+    {
+      "related_detections": [0, 1],
+      "description": "얼굴과 위치 정보가 동시에 노출되어 신원 특정 위험이 큽니다."
+    }
+  ],
+  "recommended_actions": ["얼굴과 간판 영역을 모자이크 처리하세요."],
+  "limitations": "화질이 낮아 일부 문자는 정확히 인식되지 않을 수 있습니다."
+}
