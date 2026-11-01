@@ -1,28 +1,37 @@
 {
-  "overall_risk_score": 72,
-  "overall_risk_level": "높음",
-  "summary": "사진 배경과 글 내용을 합치면 사는 동네와 생활 패턴이 유추될 수 있어요.",
-  "risks": [
+  "overall": {
+    "risk_level": "high",
+    "summary": "교복 상의의 학교 마크와 동네 위치 태그가 결합되어 생활 반경이 추정될 수 있습니다."
+  },
+  "detections": [
     {
-      "category": "위치",
-      "risk_factor": "창밖에 보이는 아파트 이름과 주변 건물",
-      "risk_level": "높음",
-      "evidence": "사진 왼쪽 창문 너머로 아파트 외벽 글자와 근처 간판이 보여요.",
-      "solution": "창밖 부분을 모자이크하거나 사진을 잘라서 올려주세요."
+      "id": "d1",
+      "category": "school_work",
+      "risk_level": "medium",
+      "found": "사진 속 교복 상의의 학교 마크 일부가 보입니다.",
+      "evidence": "가슴 부분의 엠블럼이 식별 가능한 크기로 촬영됨",
+      "confidence": 0.7
     },
     {
-      "category": "신원",
-      "risk_factor": "택배 상자에 붙은 송장",
-      "risk_level": "높음",
-      "evidence": "바닥의 택배 상자 송장에 이름과 주소 일부가 보여요.",
-      "solution": "송장을 떼거나 가린 뒤 촬영해 주세요."
-    },
-    {
-      "category": "생활패턴",
-      "risk_factor": "매일 같은 시간대 게시물",
-      "risk_level": "보통",
-      "evidence": "글에 '매일 아침 7시 등교길'이라는 표현이 있어요.",
-      "solution": "시간과 장소를 특정할 수 있는 표현은 빼고, 게시는 시간차를 두고 해주세요."
+      "id": "d2",
+      "category": "location",
+      "risk_level": "medium",
+      "found": "게시글에 동네 단위 위치 태그가 붙어 있습니다.",
+      "evidence": "게시글 문구에 적힌 위치 태그",
+      "confidence": 0.9
     }
-  ]
+  ],
+  "combined_risks": [
+    {
+      "involves": ["d1", "d2"],
+      "inference": "학교와 동네 정보가 함께 노출되어 통학 경로나 생활 반경이 추정될 수 있습니다.",
+      "secondary_harm": "스토킹, 사칭, 원치 않는 방문 위험",
+      "risk_level": "high"
+    }
+  ],
+  "recommended_actions": [
+    { "priority": 2, "action": "mask", "target": "d1", "detail": "학교 마크 부분을 모자이크하거나 잘라내세요." },
+    { "priority": 1, "action": "delete", "target": "d2", "detail": "위치 태그를 삭제하세요." }
+  ],
+  "limitations": "이미지 해상도가 낮아 일부 항목은 확실하지 않을 수 있습니다."
 }

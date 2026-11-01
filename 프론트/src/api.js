@@ -19,7 +19,7 @@ export async function analyzePost({ image, text }) {
   }
 
   const formData = new FormData();
-  if (image) formData.append("image", image);
+  if (image) formData.append("images", image);
   if (text) formData.append("text", text);
   formData.append("consent", "true");
 
