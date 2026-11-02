@@ -24,8 +24,7 @@ load_dotenv()
 
 # ★ True  = AI 없이 mock_result.json 의 고정 결과를 돌려줌 (지금 단계)
 # ★ False = 진짜 Claude API 로 분석 (나중에 API 키 넣고 바꾸기)
-USE_MOCK = True
-
+USE_MOCK = False
 MODEL = os.getenv("CLAUDE_MODEL", "claude-sonnet-5-5")
 BASE_DIR = Path(__file__).resolve().parent
 
@@ -98,7 +97,7 @@ async def analyze(
         client = anthropic.Anthropic()  # .env 의 ANTHROPIC_API_KEY 를 자동으로 읽음
         response = client.messages.create(
             model=MODEL,
-            max_tokens=2000,
+            max_tokens=4000,
             system=SYSTEM_PROMPT,
             messages=[{"role": "user", "content": content}],
         )
